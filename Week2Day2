@@ -1,0 +1,52 @@
+package Day2;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Assignment_Webtable {
+
+	public static void main(String[] args)
+	{
+	WebDriverManager.chromedriver().setup();
+	ChromeDriver driver=new ChromeDriver();
+	driver.get("http://leafground.com/pages/table.html");
+	driver.manage().window().maximize();
+	
+	List<WebElement> findRows=driver.findElements(By.xpath("//table[@id='table_id']//tr"));
+	List<WebElement> findCols= driver.findElements(By.xpath("//table[@id='table_id']//th"));
+	System.out.println("No of rows are "+findRows.size());
+	System.out.println("No of rows are "+findCols.size());
+	
+	for(int i=1;i<=findRows.size();i++)
+	{
+		WebElement value=findRows.get(i);
+		//System.out.println(value.getText());
+		String value1=value.getText();
+		String value2=value1.replace("%"," ");
+		System.out.println(value2);
+		//int intValue=Integer.parseInt(value1);
+
+		//System.out.println(intValue);
+	}
+	
+	
+	/*List <WebElement> rowValue=driver.findElements(By.xpath("//table[@id='table_id']//tr[3]/td[2]"));
+	for(WebElement leastRow:rowValue)
+	{
+			System.out.println("Progress Value of Learn to interact with Elements is "+leastRow.getText());
+		
+	}
+	List <WebElement> rowValue1= driver.findElements(By.xpath("//table[@id='table_id']//tr[4]/td[2]"));
+	for(WebElement leastRow1:rowValue1)
+	{
+		System.out.println("Least progress value is "+leastRow1.getText());
+		
+	}*/
+
+	}
+
+}
